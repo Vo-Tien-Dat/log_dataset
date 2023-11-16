@@ -452,19 +452,25 @@ class Feature_extraction():
                     
                 count_rows+=1
                 
+        file_path = '/home/votiendat/Documents/machine_learning/do_an/log_dataset/dataset.csv'
+        df = pd.DataFrame(base_row)
+        df = df.drop(['ts', 'Protocol_name', 'max_duration', 'min_duration', 'sum_duration', 'std_duration', 'CoAP', 'DS status', 'Fragments', 'Sequence number', 'Protocol Version', 'flow_idle_time', 'flow_active_time', 'MAC', 'urg_flag_number', 'average_duration', 'IGMP'], axis = 1)
+        print(df.columns)
+        print(len(df.columns))
+        df.to_csv(file_path, index=False)
                
-        processed_df = pd.DataFrame(base_row)
-        # summary
-        last_row = 0
-        n_rows = 10
-        df_summary_list = []
-        while last_row<len(processed_df):
-            sliced_df = processed_df[last_row:last_row+n_rows]
-            sliced_df = pd.DataFrame(sliced_df.mean()).T# mean
-            df_summary_list.append(sliced_df)
-            last_row += n_rows
-        processed_df = pd.concat(df_summary_list).reset_index(drop=True)
-        processed_df.to_csv(csv_file_name+".csv", index=False)
+        # processed_df = pd.DataFrame(base_row)
+        # # summary
+        # last_row = 0
+        # n_rows = 10
+        # df_summary_list = []
+        # while last_row<len(processed_df):
+        #     sliced_df = processed_df[last_row:last_row+n_rows]
+        #     sliced_df = pd.DataFrame(sliced_df.mean()).T# mean
+        #     df_summary_list.append(sliced_df)
+        #     last_row += n_rows
+        # processed_df = pd.concat(df_summary_list).reset_index(drop=True)
+        # processed_df.to_csv(csv_file_name+".csv", index=False)
         return True
 
 

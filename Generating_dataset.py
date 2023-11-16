@@ -17,9 +17,9 @@ if __name__ == '__main__':
         'ddos.pcap'
     ]
     subfiles_size = 10 # MB
-    split_directory = '/vnc/log/'
-    destination_directory = '/vnc/log/'
-    converted_csv_files_directory = '/vnc/log/'
+    split_directory = '/home/votiendat/Documents/machine_learning/do_an/data/'
+    destination_directory = '/home/votiendat/Documents/machine_learning/do_an/des/'
+    converted_csv_files_directory = '/home/votiendat/Documents/machine_learning/do_an/csv/'
     n_threads = 8
     
     address = "./"
@@ -30,10 +30,10 @@ if __name__ == '__main__':
     for i in range(len(pcapfiles)):
         lstart = time.time()
         pcap_file = pcapfiles[i]
-        print(pcap_file)
         print(">>>> 1. splitting the .pcap file.")
         os.system('tcpdump -r '+ pcap_file +' -w ' + split_directory + 'split_temp -C ' + str(subfiles_size))
         subfiles = os.listdir(split_directory)
+        print(subfiles)
         print(">>>> 2. Converting (sub) .pcap files to .csv files.")
         processes = []
         errors = 0
@@ -53,7 +53,7 @@ if __name__ == '__main__':
                 processes.append(p)
             for p in processes:
                 p.join()
-        assert len(subfiles)==len(os.listdir(destination_directory))
+        # assert len(subfiles)==len(os.listdir(destination_directory))
         # print(">>>> 3. Removing (sub) .pcap files.")
         # for sf in subfiles:
         #     os.remove(split_directory + sf)
