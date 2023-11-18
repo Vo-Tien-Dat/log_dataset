@@ -14,7 +14,7 @@ if __name__ == '__main__':
     print("========== CIC IoT feature extraction ==========")
     
     pcapfiles = [
-        'ddos.pcap'
+        '../capture/capture_00048_20231118110040.pcap'
     ]
     subfiles_size = 10 # MB
     split_directory = '/home/votiendat/Documents/machine_learning/do_an/data/'

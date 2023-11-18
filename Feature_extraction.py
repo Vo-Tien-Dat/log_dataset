@@ -452,9 +452,11 @@ class Feature_extraction():
                     
                 count_rows+=1
                 
-        file_path = '/home/votiendat/Documents/machine_learning/do_an/log_dataset/dataset.csv'
+        file_path = '/home/votiendat/Documents/machine_learning/do_an/csv/capture_00048_20231118110040.csv'
         df = pd.DataFrame(base_row)
         df = df.drop(['ts', 'Protocol_name', 'max_duration', 'min_duration', 'sum_duration', 'std_duration', 'CoAP', 'DS status', 'Fragments', 'Sequence number', 'Protocol Version', 'flow_idle_time', 'flow_active_time', 'MAC', 'urg_flag_number', 'average_duration', 'IGMP'], axis = 1)
+        
+        df.rename(columns=lambda x: x.lower(), inplace=True)
         print(df.columns)
         print(len(df.columns))
         df.to_csv(file_path, index=False)
