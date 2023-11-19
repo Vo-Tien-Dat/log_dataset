@@ -8,11 +8,8 @@ class EventHandler(FileSystemEventHandler):
         self.callback = callback
 
     def on_created(self, event):
-        if event.is_directory(): 
-            print(f"Thêm tệp: {event.src_path}")
-            self.callback(src_path=event.src_path)
-        else: 
-            print(event.src_path)
+        print(f"Thêm tệp: {event.src_path}")
+        self.callback(src_path=event.src_path)
 
 class WatchFolder():
     def __init__(self, src_path, callback) -> None:

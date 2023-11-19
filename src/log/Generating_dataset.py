@@ -7,6 +7,7 @@ from tqdm import tqdm
 from multiprocessing import Process
 import numpy as np
 import pandas as pd
+import platform
 
 
 def GenerateDataset(pcapfiles: []):
@@ -23,6 +24,15 @@ def GenerateDataset(pcapfiles: []):
     split_directory = '/mnt/e/log/captures/'
     destination_directory = '/mnt/e/log/'
     converted_csv_files_directory = 'E:/log/log/csv/'
+    print(platform.system() == 'Linux')
+
+    if platform.system() != 'Linux':
+        split_directory = 'E:/log/captures/'
+        destination_directory = 'E:/log/log/'
+    else: 
+        destination_directory = '/mnt/e/log/'
+        split_directory = '/mnt/e/log/captures/'
+    
     n_threads = 8
     
     address = "./"

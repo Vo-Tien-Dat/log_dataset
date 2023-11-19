@@ -13,6 +13,7 @@ from log.Supporting_functions import get_protocol_name, get_flow_info, get_flag_
     
 from tqdm import tqdm
 import time
+import platform
 
 class Feature_extraction():
     columns = ["ts","flow_duration","Header_Length",
@@ -452,7 +453,11 @@ class Feature_extraction():
                     
                 count_rows+=1
                 
-        file_path = '/mnt/e/log/csv/captures_cic_2023_00001_20231118144249.csv'
+        file_path = 'E:/log/csv/capture.csv'
+        if platform.system() != "Linux":
+            file_path = '/mnt/e/log/csv/captures_cic_2023_00001_20231118144249.csv'
+        else: 
+            file_path = '/mnt/e/log/csv/captures_cic_2023_00001_20231118144249.csv'
         df = pd.DataFrame(base_row)
         df = df.drop(['ts', 'Protocol_name', 'max_duration', 'min_duration', 'sum_duration', 'std_duration', 'CoAP', 'DS status', 'Fragments', 'Sequence number', 'Protocol Version', 'flow_idle_time', 'flow_active_time', 'MAC', 'urg_flag_number', 'average_duration', 'IGMP'], axis = 1)
         
