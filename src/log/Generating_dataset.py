@@ -1,4 +1,4 @@
-from Feature_extraction import Feature_extraction
+from log.Feature_extraction import Feature_extraction
 import time
 import warnings
 warnings.filterwarnings('ignore')
@@ -8,24 +8,24 @@ from multiprocessing import Process
 import numpy as np
 import pandas as pd
 
-if __name__ == '__main__':
+
+def GenerateDataset(pcapfiles: []):
+
+# if __name__ == '__main__':
 
     start = time.time()
     print("========== CIC IoT feature extraction ==========")
     
-    pcapfiles = [
-        '../capture/capture_00048_20231118110040.pcap'
-    ]
+    # pcapfiles = [
+    #     '../capture/captures_cic_2023_00001_20231118144846.pcap'
+    # ]
     subfiles_size = 10 # MB
-    split_directory = '/home/votiendat/Documents/machine_learning/do_an/data/'
-    destination_directory = '/home/votiendat/Documents/machine_learning/do_an/des/'
-    converted_csv_files_directory = '/home/votiendat/Documents/machine_learning/do_an/csv/'
+    split_directory = '/mnt/e/log/captures/'
+    destination_directory = '/mnt/e/log/'
+    converted_csv_files_directory = 'E:/log/log/csv/'
     n_threads = 8
     
     address = "./"
-    
-        
-
     
     for i in range(len(pcapfiles)):
         lstart = time.time()
@@ -77,6 +77,8 @@ if __name__ == '__main__':
         
     end = time.time()
     print(f'Elapsed Time = {(end-start)}s')
+
+
     
     
     

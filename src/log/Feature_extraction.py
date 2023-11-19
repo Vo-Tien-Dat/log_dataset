@@ -2,12 +2,12 @@ import dpkt
 import pandas as pd
 import json
 from scapy.all import *
-from Communication_features import Communication_wifi, Communication_zigbee
-from Connectivity_features import Connectivity_features_basic, Connectivity_features_time, \
+from log.Communication_features import Communication_wifi, Communication_zigbee
+from log.Connectivity_features import Connectivity_features_basic, Connectivity_features_time, \
     Connectivity_features_flags_bytes
-from Dynamic_features import Dynamic_features
-from Layered_features import L3, L4, L2, L1
-from Supporting_functions import get_protocol_name, get_flow_info, get_flag_values, compare_flow_flags, \
+from log.Dynamic_features import Dynamic_features
+from log.Layered_features import L3, L4, L2, L1
+from log.Supporting_functions import get_protocol_name, get_flow_info, get_flag_values, compare_flow_flags, \
     get_src_dst_packets, calculate_incoming_connections, \
     calculate_packets_counts_per_ips_proto, calculate_packets_count_per_ports_proto
     
@@ -452,7 +452,7 @@ class Feature_extraction():
                     
                 count_rows+=1
                 
-        file_path = '/home/votiendat/Documents/machine_learning/do_an/csv/capture_00048_20231118110040.csv'
+        file_path = '/mnt/e/log/csv/captures_cic_2023_00001_20231118144249.csv'
         df = pd.DataFrame(base_row)
         df = df.drop(['ts', 'Protocol_name', 'max_duration', 'min_duration', 'sum_duration', 'std_duration', 'CoAP', 'DS status', 'Fragments', 'Sequence number', 'Protocol Version', 'flow_idle_time', 'flow_active_time', 'MAC', 'urg_flag_number', 'average_duration', 'IGMP'], axis = 1)
         
