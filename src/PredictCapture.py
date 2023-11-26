@@ -24,7 +24,8 @@ def PredictCapture():
     'smtp', 'ssh', 'irc', 'tcp', 'udp', 'dhcp', 'arp', 'icmp', 'ipv', 'llc',
     'tot sum', 'min', 'max', 'avg', 'std', 'tot size', 'iat', 'number',
     'magnitue', 'radius', 'covariance', 'variance', 'weight']
-    real_df = pd.read_csv(REAL_FILE_PATH, names=col_names)
+    real_df = pd.read_csv(REAL_FILE_PATH)
+    real_df.columns = col_names
 
 
     feature_types = [
